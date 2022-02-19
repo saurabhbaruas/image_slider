@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SumitrSaurabh</title>
+        <link href="CSS/imageslider.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div id="container">
+        <img src="image/2.jpg" alt="slide1" class="slides"/>
+        <img src="image/founder.jpg" alt="slide1" class="slides"/>
+        <img src="image/gpr2.jpg" alt="slide1" class="slides"/>
+        <img src="image/gpr3.jpg" alt="slide1" class="slides"/>
+        <img src="image/gpr5.jpg" alt="slide1" class="slides"/>
+        <img src="image/9.png" alt="slide1" class="slides"/>
+        <button class="btn" onclick="plusIndex(-1)" id="btn1">&#10094;</button>
+        <button class="btn" onclick="plusIndex(1)" id="btn2">&#10095;</button>
+        </div>
+    </body>
+    
+    <script>
+        var index = 1;
+        function plusIndex(n){
+            index = index + n;
+            showImage(index);
+        }
+        
+        showImage(1);
+        function showImage(n){
+            var i;
+            var x =document.getElementsByClassName("slides");
+            if(n > x.length){ index = 1};
+            if(n < 1){ index = x.length};
+            for (i=0;i<x.length;i++)
+                {
+                    x[i].style.display = "none";
+                }
+            x[index-1].style.display = "block";
+        }
+        
+        /*Function For Auto Slide*/
+            
+        autoSlide();
+        function autoSlide(){
+        /*    alert("hELOOO");        */
+             var i;
+            var x =document.getElementsByClassName("slides");
+                    for (i=0;i<x.length;i++)
+                {
+                    x[i].style.display = "none";
+                }
+            if(index > x.length){index = 1}
+            x[index-1].style.display = "block";
+                index++;
+        
+            setTimeout(autoSlide,2000);
+        }
+    </script>
+</html>
